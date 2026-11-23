@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require_relative "AwasunuRb/Awasunu.rb"
+
+viola
+
+documentation("Awasunu", "\nWelcome to Awasunu on Linux.")

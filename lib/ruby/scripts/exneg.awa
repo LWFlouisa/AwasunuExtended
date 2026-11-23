@@ -1,0 +1,5 @@
+# Write three negative constraint satisfaction files about fruit
+(exneg "pomme" "banane" "citrone" "banane" "citrone" "pomme" "citrone" "pomme" "banane" first_fruit second_fruit third_fruit)
+
+# Write three negative constraint satisfaction files about meat
+(exneg "poulet" "beouf" "porc" "beouf" "porc" "poulet" "porc" "beouf" "poulet" first_meats second_meats third_meats)

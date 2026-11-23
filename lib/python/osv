@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+import sys
+
+sys.path.append("AwasunuPy")
+
+from awasunu import encrire
+from awasunu import encrireln
+from awasunu import osv
+
+osv(sys.argv[1], sys.argv[2], sys.argv[3])

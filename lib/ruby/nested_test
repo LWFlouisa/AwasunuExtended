@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+def expression(*args)
+  o1, s1, v1,
+  s2, o2, v2 = args
+
+  def encrire(input)
+    print input
+  end
+
+  def encrireln(input)
+    puts input
+  end
+
+  def osv(o, s, v)
+    o = o.tr "(", ""
+    o = o.tr ")", ""
+    o = o.tr "[", ""
+    o = o.tr "]", ""
+
+    s = s.tr "(", ""
+    s = s.tr ")", ""
+    s = s.tr "[", ""
+    s = s.tr "]", ""
+
+    v = v.tr "(", ""
+    v = v.tr ")", ""
+    v = v.tr "[", ""
+    v = v.tr "]", ""
+
+    encrire("#{o} #{s} #{v}, ")
+  end
+
+  def sov(s, o, v)
+    o = o.tr "(", ""
+    o = o.tr ")", ""
+    o = o.tr "[", ""
+    o = o.tr "]", ""
+
+    s = s.tr "(", ""
+    s = s.tr ")", ""
+    s = s.tr "[", ""
+    s = s.tr "]", ""
+
+    v = v.tr "(", ""
+    v = v.tr ")", ""
+    v = v.tr "[", ""
+    v = v.tr "]", ""
+
+    encrire("#{s} #{o} #{v}.")
+  end
+
+  osv(o1, s1, v1); sov(s2, o2, v2)
+
+  encrireln(" ")
+end
+
+expression(ARGV[0], ARGV[1], ARGV[2], ARGV[3], ARGV[4], ARGV[5])

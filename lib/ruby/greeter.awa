@@ -1,0 +1,23 @@
+viola
+
+# Je
+(osv "pomme" "je" "mangeon")
+(osv "banane" "je" "mangeon")
+(osv "citrone" "je" "mangeon")
+
+# Vous
+(osv "pomme" "vous" "mangeon")
+(osv "banane" "vous" "mangeon")
+(osv "citrone" "vous" "mangeon")
+
+# Elle
+(osv "pomme" "elle" "mangeon")
+(osv "banane" "elle" "mangeon")
+(osv "citrone" "elle" "mangeon")
+
+# Il
+(osv "pomme" "il" "mangeon")
+(osv "banane" "il" "mangeon")
+(osv "citrone" "il" "mangeon")
+
+(encrireln "Je finis!")

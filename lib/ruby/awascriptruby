@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative "AwasunuRb/Awasunu.rb"
+
+read_file

@@ -1,0 +1,9 @@
+./awascriptruby examples/mdocs.awa
+./awascriptruby examples/mosv.awa
+./awascriptruby examples/fruit.awa
+./awascriptruby examples/metaprogramming.awa
+./awascriptruby examples/greeter.awa
+./awascriptruby examples/mdocs.awa
+./awascriptruby examples/mosv.awa
+./awascriptruby examples/metaprogramming.awa
+./awascriptruby examples/greeter.awa
