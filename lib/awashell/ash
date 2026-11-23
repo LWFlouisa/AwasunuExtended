@@ -1,0 +1,303 @@
+#!/usr/bin/env sh
+
+###############################################################################################
+#                                      Directory Management                                   #
+###############################################################################################
+# This is for creating file directories, with comcrirannuaire merging creation and navigation #
+# into the same process.                                                                      #
+###############################################################################################
+commute_annuaire() {
+  local dirname=$1
+
+  cd "$dirname"
+}
+
+encrirannuaire() {
+  local dirname=$1
+
+  mkdir "$dirname"
+}
+
+comcrirannuaire() {
+  local dirname=$1
+
+  mkdir "$dirname"; cd "$dirname"
+}
+
+crelease() {
+  local old_directory=$1
+
+  encrirannuaire "bin"
+  encrirannuaire "docs"
+  encrirannuaire "licenses"
+  encrirannuaire "msrc"
+  encrirannuaire "mce"
+  encrirannuaire "src"
+
+  comcrirannuaire "lib"
+  encrirannuaire  "sh"
+
+  cd $old_directory
+
+  enc '#!/usr/bin/env sh' > awashell
+}
+
+###############################################################################################
+#                                        Basic Processes                                      #
+###############################################################################################
+# Execution of Awasunu scripts is timed by the operating system in order to check how fast    #
+# fast the run time is.                                                                       #
+###############################################################################################
+enc() {
+  local input=$1
+  echo "$input"
+}
+
+edoc() {
+  local source_coe=$1
+  local file_name=$2
+
+  echo "$source_code" > $file_name
+}
+
+awa() {
+  local script_name=$1
+  awasunu "$script_name"
+}
+
+awatemps() {
+  local script_name=$1
+
+  time awasunu "$script_name"
+}
+
+###############################################################################################
+#                                        Parle Grammaire                                      #
+###############################################################################################
+# Basic word orders within the Awasunu language, such that the transition between this shell  #
+# language and Awasunu itself is as smooth as possible.                                       #
+###############################################################################################
+osv() {
+  local object=$1
+  local subject=$2
+  local verb=$3
+
+  echo "$object $subject $verb"
+}
+
+sov() {
+  local subject=$1
+  local object=$2
+  local verb=$3
+
+  echo "$subject $object $verb"
+}
+
+vos() {
+  local verb=$1
+  local subject=$2
+  local object=$3
+
+  echo "$verb $object $subject"
+}
+
+osvtemps() {
+  local object=$1
+  local subject=$2
+  local verb=$3
+
+  time echo "$object $subject $verb"
+}
+
+sovtemps() {
+  local subject=$1
+  local object=$2
+  local verb=$3
+
+  time echo "$subject $object $verb"
+}
+
+vostemps() {
+  local verb=$1
+  local subject=$2
+  local object=$3
+
+  time echo "$verb $object $subject"
+}
+
+###############################################################################################
+#                                      Borreau De Priorite                                    #
+###############################################################################################
+# Priorities of execution of Awasunu scripts, with some variations that timed the process of  #
+# executing files to check if files are written efficiently.                                  #
+###############################################################################################
+object_first() {
+  local object=$1
+  local subject=$2
+  local verb=$3
+
+  echo "Object File"
+  awasunu "$object.awa"
+
+  echo "Subject File"
+  awasunu "$subject.awa"
+
+  echo "Verb File"
+  awasunu "$verb.awa"
+}
+
+action_first() {
+  local verb=$1
+  local object=$2
+  local subject=$3
+
+  echo "Verb File"
+  awasunu "$verb.awa"
+  
+  echo "Object File"
+  awasunu "$object.awa"
+
+  echo "Subject File"
+  awasunu "$subject.awa"
+}
+
+object_first_temps() {
+  local object=$1
+  local subject=$2
+  local verb=$3
+
+  echo "Object File"
+  time awasunu "$object.awa"
+
+  echo "Subject File"
+  time awasunu "$subject.awa"
+
+  echo "Verb File"
+  time awasunu "$verb.awa"
+}
+
+action_first_temps() {
+  local verb=$1
+  local object=$2
+  local subject=$3
+
+  echo "Verb File"
+  awasunu "$verb.awa"
+  
+  echo "Object File"
+  awasunu "$object.awa"
+
+  echo "Subject File"
+  awasunu "$subject.awa"
+}
+
+
+###############################################################################################
+#                                  Les Elencos Et Ascoltares                                  #
+###############################################################################################
+# The standard list format, which can be referred to as either "les elencos" or "les          #
+# ascoltares depending on context, but all fall under "Les Listes Et Ensembles". Le Francais  #
+# est utilise en le contexte mot liste de Francias.                                           #
+###############################################################################################
+pgram() {
+  local verb=$1
+  local object=$2
+  local subject=$3
+
+  echo "['$verb', '$object', '$subject']"
+}
+
+pgramtemps() {
+  local verb=$1
+  local object=$2
+  local subject=$3
+
+  time echo "['$verb', '$object', '$subject']"
+}
+
+###############################################################################################
+#                                           Risutos                                           #
+###############################################################################################
+# Here the Japanese term for lists are used when mapping to Japanese words, or situations     #
+# where its a fusion between Francais and Nihongo, which will eventually be split its into    #
+# its own form of data processing.                                                            #
+###############################################################################################
+ntupe() {
+  local verb=$1
+  local object=$2
+  local subject=$3
+
+  echo "['$verb', '$object', '$subject']"
+}
+
+ntupetemps() {
+  local verb=$1
+  local object=$2
+  local subject=$3
+
+  time echo "['$verb', '$object', '$subject']"
+}
+
+###############################################################################################
+#                                      Risuto Specialiste                                     #
+###############################################################################################
+otupe() {
+  local object_one=$1
+  local object_two=$2
+  local object_tre=$3
+
+  echo "['$object_one', '$object_two', '$object_tre']"
+}
+
+otupe_temps() {
+  local object_one=$1
+  local object_two=$2
+  local object_tre=$3
+
+  echo "['$object_one', '$object_two', '$object_tre']"
+}
+
+###############################################################################################
+#                                  Negative constraint logic                                  #
+###############################################################################################
+ne() {
+  local first_noun=$1
+  local second_noun=$2
+
+  echo "Ne $first_noun ou $second_noun."
+}
+
+mais() {
+  local third_noun=$1
+
+  echo "Mais c'est $third_noun."
+}
+
+netemps() {
+  local first_noun=$1
+  local second_noun=$2
+
+  time echo "Ne $first_noun ou $second_noun."
+}
+
+maistemps() {
+  local third_noun=$1
+
+  time echo "Mais c'est $third_noun."
+}
+
+###############################################################################################
+#                                      Script Generation                                      #
+###############################################################################################
+dohlim() {
+  local first_symbol=$1
+  local first_description=$2
+
+  local second_symbol=$3
+  local second_description=$4
+
+  local third_symbol=$5
+  local third_description=$6
+
+  echo "(hlim 2 $first_symbol $first_description $second_symbol $second_description $third_symbol $third_description)" > scripts/clothed/estimate.awa
+}
