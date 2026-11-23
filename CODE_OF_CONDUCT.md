@@ -19,6 +19,8 @@ Do Not Assume because we met before that you have permission to change or alter 
 
 <b><i>False Accusation</i></b> Do not smear people's reputation as being vibe coders unless you can prove that in a court of law. Continuing to do so gets your ass removed from contributors.
 
+<b><o>DMCAs</i></b> Do not attempt to acquire this repository through legal means unless you actually own the software and contribute to the repository as the admin.
+
 ## Technical Requirements / Guidelines
 
 <b><i>Drada Specific</i></b> Do not request support or implementation in any other compiler besides GCC, except for ones I make myself. This is not intended for proprietary operating system. This is neither a traditionally compiled language or interpreted, closer to Lisp with Ruby byte code.
