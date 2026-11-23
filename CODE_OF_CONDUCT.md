@@ -21,7 +21,7 @@ Do Not Assume because we met before that you have permission to change or alter 
 
 ## Technical Requirements / Guidelines
 
-<b><i>Drada Specific Do not request support or implementation in any other compiler besides GCC, except for ones I make myself. This is not intended for proprietary operating system. This is neither a traditionally compiled language or interpreted, closer to Lisp with Ruby byte code.
+<b><i>Drada Specific</i></b> Do not request support or implementation in any other compiler besides GCC, except for ones I make myself. This is not intended for proprietary operating system. This is neither a traditionally compiled language or interpreted, closer to Lisp with Ruby byte code.
 
 <i><b>Training NPCs and Enemies in Roguelike games</i></b> This tool keeps AI models sandboxed and bounded, do not use this for training uncontained real world systems.
 
