@@ -1,0 +1,124 @@
+body {
+  background-color: #2B2C2C;
+  border: #C3C9BE;
+}
+
+screen {
+  background-color: #141515; 
+  color: #919392;
+
+  padding-left: 128px;
+  padding-right: 128px;
+  padding-top: 128px;
+  padding-top: 128px;
+}
+
+container {
+  padding-left: 156px;
+  padding-right: 156px;
+  padding-top: 156px;
+  padding-top: 156px;
+}
+
+connection {
+  color: #E4EDD7;
+  display: block;
+
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+bot_name {
+  background-color: #0C0C0C;
+  color: #C3C9BE;
+}
+
+bot_responce {
+  background-color: #252424;
+  color: #C3C9BE;
+}
+
+bot_probability_label {
+  background-color: #37373F;
+  color: #BAAFC9;
+
+  font-size: 18px;
+
+  text-align: center;
+}
+
+bot_probability {
+  background-color: #252424;
+  color: #a6a7a8;
+
+  font-size: 18px;
+  
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+description {
+  color: #464748;
+
+  display: block;
+  text-align: center;
+
+  font-size: 18px;
+
+  padding-left: 512px;
+  padding-right: 512px;
+}
+
+technical_description {
+  background-color: #252424;
+  color: #a6a7a8;
+
+  font-size: 18px;
+
+  display: block;
+}
+
+probabilistic_output {
+  background-color: #252424;
+  color: #a6a7a8;
+
+  font-size: 18px;
+
+  display: block;
+}
+
+parsed_output {
+  background-color: #252424;
+  color: #a6a7a8;
+
+  font-size: 18px;
+
+  display: block;
+}
+
+cette {
+  background-color: #252424;
+  color: #a6a7a8;
+  
+  font-size: 18px;
+
+  display: block;
+}
+
+maisette {
+  background-color: #252424;
+  color: #a6a7a8;
+
+  font-size: 18px;
+
+  display: block;
+}
+
+sinon {
+  background-color: #252424;
+  color: #a6a7a8;
+
+  font-size: 18px;
+
+  display: block;
+}
