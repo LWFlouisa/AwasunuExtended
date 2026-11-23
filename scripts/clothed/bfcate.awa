@@ -1,0 +1,4 @@
+# Bifurcate descriptions into two sets.
+# bifurcate 2 :cats cats_are_the_cleanest_pets cats_eat_wet_food_pouches :dogs dogs_are_mans_best_friend dogs_eat_your_french_fries :gerbils gerbils_dont_use_hamster_wheels gerbils_crawl_around_in_cage
+# Bifurcate information about language into two sets.
+bifurcate 2 :ruby used_for_eary_prototyping_of_dsl_features used_for_testing_ml :python used_as_alternative_prototyping alternative_interpreter_implementation :lisp used_for_awasunu_code_generation known_for_homoiconicity

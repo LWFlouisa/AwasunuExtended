@@ -1,0 +1,14 @@
+(encrireln "Animals")
+
+(encrireln "SESSION ONE")
+(hlim 2 :cats cats_are_the_cleanest_pets :dogs dogs_are_mans_best_friend :gerbils gerbils_dont_use_hamster_wheels)
+
+(espace)
+
+(encrireln "SESSION TWO")
+(hlim 2 :cats cats_are_the_cleanest_pets :dogs dogs_are_mans_best_friend :gerbils gerbils_dont_use_hamster_wheels)
+
+(espace)
+
+(encrireln "SESSION TRE")
+(hlim 2 :cats cats_are_the_cleanest_pets :dogs dogs_are_mans_best_friend :gerbils gerbils_dont_use_hamster_wheels)

@@ -1,0 +1,2 @@
+./awasunu greeter
+encrireln Hello World

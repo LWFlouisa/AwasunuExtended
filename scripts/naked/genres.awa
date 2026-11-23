@@ -1,0 +1,8 @@
+encrireln Genre De Fruit  
+hlim 2 :le_pomme pomme_je_moi_mangeon :le_banane banane_je_moi_mangeon :le_citrone citrone_je_moi_mangeon
+
+encrireln Genre De Legumes  
+hlim 2 :le_aubergine le_aubergine_je_moi_mangeon :le_carrot carrot_je_moi_mangeon :le_pomme_de_terre le_pomme_de_terre_je_moi_mangeon
+
+encrireln Genre De Pieds  
+hlim 2 :le_sabots_de_bois le_sabots_de_bois_je_moi_avoir :le_sabots_de_vache le_sabots_de_vache_je_moi_avoir :le_sabots_de_vin le_sabots_de_vin_je_moi_avoir
