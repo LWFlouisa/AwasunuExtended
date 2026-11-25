@@ -1186,7 +1186,7 @@ def maisette(noun, adjective)
 end
 
 def sinon(noun, adj1, adj2, adj3)
-  enclg "Sinon #{noun} nest #{adj1 ou #{adj2}, mais cest #{adj3}."
+  enclg "Sinon #{noun} nest #{adj1} ou #{adj2}, mais cest #{adj3}."
 end
 
 def pgram(verb, object, subject)
@@ -1217,17 +1217,9 @@ def matcher(relevant_data, expected_data)
 end
 
 def matrice(a, b, c)
-  [[[a, a], [c, a], [c, a]],
-   [[b, a], [c, a], [c, b]],
-   [[c, a], [c, a], [c, c]]],
-
-  [[[a, b], [b, b], [b, a]],
-   [[b, b], [b, b], [b, b]],
-   [[c, b], [b, b], [b, c]]],
-
-  [[[a, c], [a, c], [a, a]],
-   [[b, c], [a, c], [a, b]],
-   [[c, c], [a, c], [a, c]]],
+  [[[a, a, a], [a, a, b], [a, a, c]],
+   [[b, b, a], [b, b, b], [b, b, c]],
+   [[c, c, a], [c, c, b], [c, c, c]]]
 end
 
 def selector(a, b, c)
@@ -1866,22 +1858,6 @@ def sab(*args)
   puts "Le sab est #{color}, #{shape}, et #{size}."
 end
 
-def from_script
-  file_name = ARGV[0].to_s
-
-  script      = File.read_lines("#{file_name}")
-  total_lines = script.size.to_i
-  index = 0
-
-  total_lines.times do
-    current_line = script[index]
-
-    repl_line("#{current_line}")
-
-    index = index + 1
-  end
-end
-
 def repl_interpreter
   system("clear")
 
@@ -1973,10 +1949,6 @@ def repl_interpreter
     elsif statement == "z"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
     elsif statement == " "; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
     elsif statement == "_"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-
-    ## Function names
-    elsif statement == "(enc";
-    elsif statement == ""
 
     elsif statement ==          "."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
     elsif statement ==         ".."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
@@ -2127,7 +2099,7 @@ def repl_interpreter
         power = 2
         bit_size      = statement[1].to_i
 
-        if bit_size > 20
+        if bit_size > 48
           puts "Error: Bit Size To High"
         else
           channel_count = statement[2].tr ")", ""
@@ -2137,12 +2109,56 @@ def repl_interpreter
 
           #total_size = (power**bit_size)**channel_count
 
-          total_size = ((data[0] ** data[1]) ** data[2]) #.to_s
+          total_size = ((data[0] ** data[1]) * data[2]) #.to_s
 
-          puts " => #{total_size}"
-
-          # puts " => For any given channel of #{power**bit_size} colors, factoring all channels: #{total_size}."
+          puts " => For any given channel of #{power**bit_size} colors, factoring all channels: #{total_size}."
         end
+
+      ## Atoll
+      elsif statement[0] == "(rae"
+        raiteau(statement[1], statement[2], statement[3],
+                statement[4], statement[5], statement[6])
+      elsif statement[0] == "(ato"
+        atoll(statement[1], statement[2], statement[3],
+              statement[4], statement[5], statement[6])
+      elsif statement[0] == "(gro"
+        y = statement[1].to_i
+        x = statement[2].to_i
+        z = statement[3].to_i
+
+        vault_one = statement[4]
+        vault_two = statement[5]
+        vault_tre = statement[6]
+
+        ground_radar(y, x, z, [ vault_one, vault_two, vault_tre ])
+
+      ## Investigatif
+      elsif statement[0] == "(nom"
+        nom(statement[1])
+      elsif statement[0] == "(but"
+        buttai(statement[1])
+      elsif statement[0] == "(tem"
+        temps(statement[1])
+      elsif statement[0] == "(fuk"
+        fukin(statement[1])
+      elsif statement[0] == "(mot"
+        motif(statement[1])
+      elsif statement[0] == "(hon"
+        hono(statement[1])
+      elsif statement[0] == "(jik"
+        jiko(statement[1], statement[2], statement[3])
+
+      ## Clothing Types
+      elsif statement[0] == "(arc"
+        arc(statement[1], statement[2], statement[3])
+      elsif statement[0] == "(cor"
+        cor(statement[1], statement[2], statement[3])
+      elsif statement[0] == "(jup"
+        jup(statement[1], statement[2], statement[3])
+      elsif statement[0] == "(bas"
+        bas(statement[1], statement[2], statement[3])
+      elsif statement[0] == "(sab"
+        sab(statement[1], statement[2], statement[3])
 
       ## Empilation
       elsif statement[0] == "(empint2"
@@ -2161,7 +2177,7 @@ def repl_interpreter
         stack_script("#{second_int}")
         stack_script("istack")
         stack_script("zstack")
-        CALCUATE
+        CALCULATE
 
         File.open("#{file_name}.cr", "w") { |f|
           f.puts calculation
@@ -2185,12 +2201,37 @@ def repl_interpreter
         stack_script("#{third_int}")
         stack_script("istack")
         stack_script("zstack")
-        CALCUATE
+        CALCULATE
 
         File.open("#{file_name}.cr", "w") { |f|
           f.puts calculation
         }
 
+      elsif statement[0] == "(empstr11"
+        file_name = statement[1]
+
+        calculation = <<-CALCULATE
+        require "./src/nuebyte"
+
+        stack_script("cstack")
+        stack_script("#{statement[1]}")
+        stack_script("#{statement[2]}")
+        stack_script("#{statement[3]}")
+        stack_script("#{statement[4]}")
+        stack_script("#{statement[5]}")
+        stack_script("#{statement[6]}")
+        stack_script("#{statement[7]}")
+        stack_script("#{statement[8]}")
+        stack_script("#{statement[9]}")
+        stack_script("#{statement[10]}")
+        stack_script("#{statement[11]}")
+        stack_script("pstack")
+        stack_script("cstack")
+        CALCULATE
+
+        File.open("#{file_name}.cr", "w") { |f|
+          f.puts calculation
+        }
       ## Obelisk Mechanics
       elsif statement[0] == "(obe1"
         trimmed_token = statement[1].tr ")", ""
@@ -2232,7 +2273,7 @@ def repl_interpreter
         new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + statement[4] + " " + statement[5] + " " + statement[6] + trimmed_token
 
         Obelisk::DataRecycling.obelisk(new_string)
-      elsif statement[0] == "(sca"
+      elsif statement[0] == "(sca)"
         search_space = statement[1].tr ")", ""
         search_space = statement[1].size.to_i
 
@@ -2248,255 +2289,452 @@ def repl_interpreter
   end
 end
 
-def repl_script
-  system("clear")
+def from_script
+  file_name = ARGV[0].to_s
 
-  puts "Welcome to the Nuebyte Extended Interpreter..."
+  script      = File.read_lines("#{file_name}")
+  total_lines = script.size.to_i
+  index = 0
 
-  loop do
-    istack = File.read_lines("data/istack/istack.txt")
-    sstack = File.read_lines("data/sstack/sstack.txt")
+  total_lines.times do
+    current_line = script[index]
 
-    print " >>> "; statement = gets.not_nil!.chomp.strip
+    repl_line("#{current_line}")
 
-    # Checks for function names && does further processing.
-    if statement == "cls"; system("clear")
+    index = index + 1
+  end
+end
 
-    # Checks for numbers
-    elsif statement ==  "0"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "1"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "2"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "3"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "4"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "5"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "6"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "7"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "8"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "9"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-0"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-1"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-2"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-3"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-4"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-5"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-6"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-7"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-8"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
-    elsif statement == "-9"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+def repl_script(line)
+  istack = File.read_lines("data/istack/istack.txt")
+  sstack = File.read_lines("data/sstack/sstack.txt")
 
-    # Checks for letters.
-    elsif statement == "A"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "B"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "C"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "D"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "E"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "F"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "G"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "H"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "I"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "J"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "K"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "L"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "M"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "N"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "O"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "P"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "Q"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "R"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "S"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "T"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "U"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "V"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "W"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "X"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "Y"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "Z"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "a"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "b"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "c"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "d"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "e"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "f"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "g"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "h"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "i"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "j"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "k"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "l"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "m"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "n"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "o"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "p"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "q"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "r"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "s"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "t"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "u"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "v"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "w"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "x"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "y"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "z"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == " "; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "_"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  print " >>> "; statement = line.chomp
 
-    ## Function names
-    elsif statement == "(enc";
-    elsif statement == ""
+  # Checks for function names && does further processing.
+  if statement == "cls"; system("clear")
 
-    elsif statement ==          "."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==         ".."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==        "..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==        "..|"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==       "..|."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==      "..|.."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==     "..|..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==    "..|...."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==   "..|....."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement ==  "..|......"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..|......."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..||......"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..|||....."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..||||...."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..|||||..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..||||||.."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..|||||||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == ".|.|.|...."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == ".|.|.||..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == ".|.|..||.."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == ".|.|...||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "..|..|..|."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == ".||.||.||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "|||.|||.||"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "||.|||.||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
-    elsif statement == "||...||.||"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  # Checks for numbers
+  elsif statement ==  "0"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "1"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "2"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "3"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "4"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "5"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "6"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "7"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "8"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "9"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-0"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-1"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-2"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-3"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-4"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-5"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-6"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-7"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-8"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
+  elsif statement == "-9"; File.open("data/istack/istack.txt", "a") { |f| f.puts statement }
 
-    ## Stack Mananagement
-    elsif statement ==     "pstack";
-      old_sstack_index = 0
-      old_sstack       = File.read_lines("data/sstack/sstack.txt")
-      old_sstack_size  = old_sstack.size.to_i
+  # Checks for letters.
+  elsif statement == "A"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "B"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "C"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "D"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "E"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "F"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "G"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "H"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "I"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "J"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "K"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "L"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "M"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "N"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "O"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "P"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "Q"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "R"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "S"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "T"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "U"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "V"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "W"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "X"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "Y"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "Z"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "a"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "b"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "c"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "d"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "e"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "f"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "g"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "h"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "i"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "j"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "k"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "l"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "m"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "n"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "o"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "p"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "q"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "r"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "s"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "t"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "u"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "v"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "w"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "x"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "y"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "z"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == " "; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "_"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
 
-      total_values = [] of String
-      total_size   = 0
-      total_index  = 0
+  elsif statement ==          "."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==         ".."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==        "..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==        "..|"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==       "..|."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==      "..|.."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==     "..|..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==    "..|...."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==   "..|....."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement ==  "..|......"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..|......."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..||......"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..|||....."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..||||...."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..|||||..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..||||||.."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..|||||||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == ".|.|.|...."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == ".|.|.||..."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == ".|.|..||.."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == ".|.|...||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "..|..|..|."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == ".||.||.||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "|||.|||.||"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "||.|||.||."; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
+  elsif statement == "||...||.||"; File.open("data/sstack/sstack.txt", "a") { |f| f.puts statement }
 
-      old_sstack_size.times do
-        new_value = old_sstack[old_sstack_index]
+  ## Stack Mananagement
+  elsif statement ==     "pstack";
+    old_sstack_index = 0
+    old_sstack       = File.read_lines("data/sstack/sstack.txt")
+    old_sstack_size  = old_sstack.size.to_i
 
-        total_values = total_values.push(new_value)
-        total_size = total_size + 1
+    total_values = [] of String
+    total_size   = 0
+    total_index  = 0
 
-        old_sstack_index = old_sstack_index + 1
-      end
+    old_sstack_size.times do
+    new_value = old_sstack[old_sstack_index]
 
-      total_size.times do
-        print total_values[total_index].chomp
+    total_values = total_values.push(new_value)
+      total_size = total_size + 1
 
-        total_index = total_index + 1
-      end
+      old_sstack_index = old_sstack_index + 1
+    end
 
-      puts " "
-    elsif statement == "cstack"
-      File.open("data/sstack/sstack.txt", "w") { |f| f.puts "" }
-    elsif statement == "istack";
-      old_istack_index = 0
-      old_istack       = File.read_lines("data/istack/istack.txt")
-      old_istack_size  = old_istack.size.to_i
+    total_size.times do
+      print total_values[total_index].chomp
 
-      total_values = [] of Int64
+      total_index = total_index + 1
+    end
 
-      old_istack_size.times do
-        new_value = old_istack[old_istack_index].strip
-        new_value = new_value.to_i
+    puts " "
+  elsif statement == "cstack"
+    File.open("data/sstack/sstack.txt", "w") { |f| f.puts "" }
+  elsif statement == "istack";
+    old_istack_index = 0
+    old_istack       = File.read_lines("data/istack/istack.txt")
+    old_istack_size  = old_istack.size.to_i
 
-        total_values = total_values.push(new_value)
+    total_values = [] of Int64
 
-        old_istack_index = old_istack_index + 1
-      end
+    old_istack_size.times do
+      new_value = old_istack[old_istack_index].strip
+      new_value = new_value.to_i
 
-      puts total_values.sum
-    elsif statement == "zstack"
-      File.open("data/istack/istack.txt", "w") { |f| }
-    else
-      ####################################################################################################
-      #                                      Primary Lisp Interpreter                                    #
-      ####################################################################################################
-      statement = statement.tr %Q("), %Q()
-      statement = statement.tr ")", %Q()
+      total_values = total_values.push(new_value)
 
-      statement = statement.split(" ")
-      final_token = statement[-1]
-      subtoken    = final_token.split("")     
+      old_istack_index = old_istack_index + 1
+    end
 
-      if    statement[0] == "(enc"
-        size_limit = statement.size.to_i
-        index = 0
+    puts total_values.sum
+  elsif statement == "zstack"
+    File.open("data/istack/istack.txt", "w") { |f| }
+  elsif statement == "ext"
+    abort
 
-        size_limit.times do
-          if    statement[index] == "(enc"
-          else
-            expression = statement[index].tr ")", ""
+  else
+    ####################################################################################################
+    #                                      Primary Lisp Interpreter                                    #
+    ####################################################################################################
+    statement = statement.tr %Q("), %Q()
+    statement = statement.tr ")", %Q()
 
-            print "#{expression} "
-          end
+    statement = statement.split(" ")
+    final_token = statement[-1]
+    subtoken    = final_token.split("")
+      
+    size_limit = statement.size.to_i 
 
-          index = index + 1
+    if    statement[0] == "(enc"
+      size_limit = statement.size.to_i
+      index = 0
+
+      size_limit.times do
+        if    statement[index] == "(enc"
+        else
+          expression = statement[index].tr ")", ""
+
+          print "#{expression} "
         end
+
+        index = index + 1
+      end
         
-        puts " "
-      elsif statement[0] == "(obe1"
-        trimmed_token = statement[1].tr ")", ""
+      puts " "
 
-        Obelisk::DataRecycling.obelisk(trimmed_token)
-      elsif statement[0] == "(obe2"
-        trimmed_token = statement[2].tr ")", ""
+    elsif statement[0] == "(dun"
+      num_one = statement[1].to_i
 
-        new_string = statement[1] + " " + trimmed_token
+      num_two = statement[2].tr ")", ""
+      num_two = statement[2].to_i
 
-        Obelisk::DataRecycling.obelisk(new_string)
-      elsif statement[0] == "(obe3"
-        trimmed_token = statement[3].tr ")", ""
+      numbers = [num_one, num_two] of Int64
 
-        new_string = statement[1] + " " + statement[2] + " " + trimmed_token
+      puts " => #{numbers.sum}"
+    elsif statement[0] == "(trn"
+      num_one = statement[1].to_i
 
-        Obelisk::DataRecycling.obelisk(new_string)
-      elsif statement[0] == "(obe4"
-        trimmed_token = statement[3].tr ")", ""
+      num_two = statement[2].to_i
 
-        new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + trimmed_token
+      num_tre = statement[3].tr ")", ""
+      num_tre = statement[3].to_i
 
-        Obelisk::DataRecycling.obelisk(new_string)
-      elsif statement[0] == "(obe5"
-        trimmed_token = statement[3].tr ")", ""
+      numbers = [num_one, num_two, num_tre] of Int64
 
-        new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + statement[4] + " " + trimmed_token
+      puts " => #{numbers.sum}"
+    elsif statement[0] == "(shn"
+      smaller_percent = statement[1].to_f
+      larger_percent  = statement[2].to_f
 
-        Obelisk::DataRecycling.obelisk(new_string)
-      elsif statement[0] == "(obe6"
-        trimmed_token = statement[3].tr ")", ""
+      surprise = smaller_percent / larger_percent
 
-        new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + statement[4] + " " + statement[5] + " " + trimmed_token
+      puts " => #{surprise}"
+    elsif statement[0] == "(gcb" # Get color count for any given color palette.
+      power = 2
 
-        Obelisk::DataRecycling.obelisk(new_string)
-      elsif statement[0] == "(obe7"
-        trimmed_token = statement[3].tr ")", ""
+      bit_size      = statement[1].tr ")", ""
+      bit_size      = bit_size.to_i
 
-        new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + statement[4] + " " + statement[5] + " " + statement[6] + trimmed_token
+      data = [power, bit_size] of Int64
 
-        Obelisk::DataRecycling.obelisk(new_string)
-      elsif statement[0] == "(sca"
-        search_space = statement[1].tr ")", ""
-        search_space = statement[1].size.to_i
+      total_size = power**bit_size
 
-        search_space.times do
-          Obelisk::DataRecycling.scatter_ashes
-        end
-      elsif statement[0] == "(ext)"
-        abort
+      puts total_size
+    elsif statement[0] == "(gcc" # Get color count for any given color palette.
+      power = 2
+      bit_size      = statement[1].to_i
+
+      if bit_size > 48
+        puts "Error: Bit Size To High"
       else
-        "Error: No such function."
+        channel_count = statement[2].tr ")", ""
+        channel_count = channel_count.to_i
+
+        data = [power, bit_size, channel_count] of Int64
+
+        total_size = ((data[0] ** data[1]) * data[2]) #.to_s
+
+        puts " => For any given channel of #{power**bit_size} colors, factoring all channels: #{total_size}."
       end
+
+    ## Atoll
+    elsif statement[0] == "(rae"
+      raiteau(statement[1], statement[2], statement[3],
+              statement[4], statement[5], statement[6])
+    elsif statement[0] == "(ato"
+      atoll(statement[1], statement[2], statement[3],
+            statement[4], statement[5], statement[6])
+    elsif statement[0] == "(gro"
+      y = statement[1].to_i
+      x = statement[2].to_i
+      z = statement[3].to_i
+
+      vault_one = statement[4]
+      vault_two = statement[5]
+      vault_tre = statement[6]
+
+      ground_radar(y, x, z, [ vault_one, vault_two, vault_tre ])
+
+    ## Investigatif
+    elsif statement[0] == "(nom"
+      nom(statement[1])
+    elsif statement[0] == "(but"
+      buttai(statement[1])
+    elsif statement[0] == "(tem"
+      temps(statement[1])
+    elsif statement[0] == "(fuk"
+      fukin(statement[1])
+    elsif statement[0] == "(mot"
+      motif(statement[1])
+    elsif statement[0] == "(hon"
+      hono(statement[1])
+    elsif statement[0] == "(jik"
+      jiko(statement[1], statement[2], statement[3])
+
+    ## Clothing Types
+    elsif statement[0] == "(arc"
+      arc(statement[1], statement[2], statement[3])
+    elsif statement[0] == "(cor"
+      cor(statement[1], statement[2], statement[3])
+    elsif statement[0] == "(jup"
+      jup(statement[1], statement[2], statement[3])
+    elsif statement[0] == "(bas"
+      bas(statement[1], statement[2], statement[3])
+    elsif statement[0] == "(sab"
+      sab(statement[1], statement[2], statement[3])
+
+    ## Empilation
+    elsif statement[0] == "(empint2"
+      file_name = statement[1]
+
+      first_int = statement[2].to_i
+
+      second_int = statement[3].tr ")", ""
+      second_int = statement[3].to_i
+
+      calculation = <<-CALCULATE
+      require "./src/nuebyte"
+
+      stack_script("zstack")
+      stack_script("#{first_int}")
+      stack_script("#{second_int}")
+      stack_script("istack")
+      stack_script("zstack")
+      CALCULATE
+
+      File.open("#{file_name}.cr", "w") { |f|
+        f.puts calculation
+      }
+    elsif statement[0] == "(empint3"
+      file_name = statement[1]
+
+      first_int = statement[2].to_i
+
+      second_int = statement[3].to_i
+
+      third_int = statement[4].tr ")", ""
+      third_int = statement[4].to_i
+
+      calculation = <<-CALCULATE
+      require "./src/nuebyte"
+
+      stack_script("zstack")
+      stack_script("#{first_int}")
+      stack_script("#{second_int}")
+      stack_script("#{third_int}")
+      stack_script("istack")
+      stack_script("zstack")
+      CALCULATE
+
+      File.open("#{file_name}.cr", "w") { |f|
+        f.puts calculation
+      }
+
+    ## Obelisk Mechanics
+    elsif statement[0] == "(obe1"
+      trimmed_token = statement[1].tr ")", ""
+
+      Obelisk::DataRecycling.obelisk(trimmed_token)
+    elsif statement[0] == "(obe2"
+      trimmed_token = statement[2].tr ")", ""
+
+      new_string = statement[1] + " " + trimmed_token
+
+      Obelisk::DataRecycling.obelisk(new_string)
+    elsif statement[0] == "(obe3"
+      trimmed_token = statement[3].tr ")", ""
+
+      new_string = statement[1] + " " + statement[2] + " " + trimmed_token
+
+      Obelisk::DataRecycling.obelisk(new_string)
+    elsif statement[0] == "(obe4"
+      trimmed_token = statement[3].tr ")", ""
+
+      new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + trimmed_token
+
+      Obelisk::DataRecycling.obelisk(new_string)
+    elsif statement[0] == "(obe5"
+      trimmed_token = statement[3].tr ")", ""
+
+      new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + statement[4] + " " + trimmed_token
+
+      Obelisk::DataRecycling.obelisk(new_string)
+    elsif statement[0] == "(obe6"
+      trimmed_token = statement[3].tr ")", ""
+
+      new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + statement[4] + " " + statement[5] + " " + trimmed_token
+
+      Obelisk::DataRecycling.obelisk(new_string)
+    elsif statement[0] == "(obe7"
+      trimmed_token = statement[3].tr ")", ""
+
+      new_string = statement[1] + " " + statement[2] + " " + statement[3] + " " + statement[4] + " " + statement[5] + " " + statement[6] + trimmed_token
+
+      Obelisk::DataRecycling.obelisk(new_string)
+    elsif statement[0] == "(sca"
+      search_space = statement[1].tr ")", ""
+      search_space = statement[1].size.to_i
+
+      search_space.times do
+        Obelisk::DataRecycling.scatter_ashes
+      end
+
+    # Create files related to mathematics crunching.
+    elsif statement[0] == "(doempint2"
+      function_name = statement[1]
+
+      number_one    = statement[2].tr "(", ""
+      number_one    = number_one.tr ")", ""
+
+      number_two    = statement[3]
+
+      empstr = <<-EMPILATION
+      #{function_name} #{number_one} #{number_two}
+      EMPILATION
+
+      File.open("scripts/empiled_maths.nue", "a") { |f|
+        f.puts empstr
+      }
+    elsif statement[0] == "(doempint3"
+      function_name = statement[1]
+
+      number_one    = statement[2].tr "(", ""
+      number_one    = number_one.tr ")", ""
+
+      number_two    = statement[3].tr "(", ""
+      number_two    = number_two.tr ")", ""
+
+      number_tre    = statement[4]
+
+      empstr = <<-EMPILATION
+      #{function_name} #{number_one} #{number_two} #{number_tre}
+      EMPILATION
+
+      File.open("scripts/empiled_maths.nue", "a") { |f|
+        f.puts empstr
+      }
+
+    elsif statement[0] == "(ext)"
+      abort
+    else
+      "Error: No such function."
     end
   end
 end
