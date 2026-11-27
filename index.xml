@@ -6,7 +6,7 @@
     <description>
       <routine_name>Awasunu Extended</routine_name>
       <technical_description>Originally evolved out of the Lhacurimosa Codebase, evolved into a general plus specialized lisp like language with clothed and naked parsing. And includes a bytecode interpreter.</technical_description>
-      <laymans>A project with good intentions, that snowballed into something way more complex than it needed to be.</laymans>
+      <laymans>A project with good intentions, that snowballed into something way more complex than it needed to be. Download here: https://github.com/LWFlouisa/AwasunuExtended</laymans>
     </description>
   </container>
 </screen>
